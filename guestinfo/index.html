@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Collection - Xiaoyang & Alex's Wedding</title>
+    <style>
+        /* Festive Western & Chinese Fusion Styling */
+    body {
+        font-family: 'Georgia', serif;
+        background-color: #fffaf0;
+        /* CHANGE THIS LINE BELOW */
+        background-image: url('pattern.png'); 
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+    }
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border: 2px solid #b22222; /* Deep red border for joy */
+        }
+        h1 {
+            text-align: center;
+            color: #b22222; /* Deep red */
+            margin-bottom: 5px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        .festive-note {
+            text-align: center;
+            color: #d4af37; /* Gold color */
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+        }
+        .couple-photo {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto 30px;
+            border-radius: 50%; /* Rounded frame */
+            border: 5px solid #d4af37; /* Gold border */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
 
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-family: 'Georgia', serif;
+        }
+        input:focus, textarea:focus {
+            border-color: #b22222;
+            outline: none;
+        }
+
+        /* Grid for City/State/Zip */
+        .row { display: flex; gap: 15px; }
+        .col { flex: 1; }
+        
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #b22222; /* Deep red */
+            color: #d4af37; /* Gold text */
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 30px;
+        }
+        button:hover { background-color: #8b0000; }
+        
+        /* Loading & Success States */
+        #loading, #success-message { display: none; text-align: center; margin-top: 25px; font-size: 1.1em; }
+        #loading { color: #b22222; }
+        #success-message { color: #27ae60; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Alex & Xiaoyang</h1>
+    <p class="festive-note">Celebration of Love!!</p>
+    <img src="img.jpg" alt="Alex & Rebecca" class="couple-photo">
+    <p class="subtitle">Please help us update our address book for our upcoming wedding celebration!</p>
+
+    <form name="submit-to-google-sheet">
+        <div class="form-group">
+            <label for="Name">Full Name(s)</label>
+            <input type="text" name="Name" placeholder="e.g. John & Jane Doe" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Address">Street Address</label>
+            <input type="text" name="Address" placeholder="123 Main St, Apt 4B" required>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <label for="City">City</label>
+                <input type="text" name="City" required>
+            </div>
+            <div class="col form-group">
+                <label for="State">State</label>
+                <input type="text" name="State" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <label for="Zip">Zip Code</label>
+                <input type="text" name="Zip" required>
+            </div>
+            <div class="col form-group">
+                <label for="Email">Email</label>
+                <input type="email" name="Email" placeholder="For updates" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Notes">Notes (Optional)</label>
+            <textarea name="Notes" rows="3" placeholder="Anything else we should know? (e.g., dietary restrictions, travel needs)"></textarea>
+        </div>
+
+        <button type="submit">Send Address</button>
+    </form>
+
+    <div id="loading">Sending your details...</div>
+    <div id="success-message">
+        Got it! Thank you for sharing your address. We can't wait to celebrate with you!
+    </div>
+</div>
+
+<script>
+    // Paste your Google Web App URL here!
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzoQZs_4JYwvFAtUc4l4sQ4FQ3_YWJNit_TpC19u-0FH7LFpNzr56fh-s2bY9A2Zq4p/exec';
+    
+    const form = document.forms['submit-to-google-sheet'];
+    const loading = document.getElementById('loading');
+    const successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      loading.style.display = 'block';
+      form.querySelector('button').disabled = true;
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            loading.style.display = 'none';
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            console.log('Success!', response);
+        })
+        .catch(error => {
+            loading.style.display = 'none';
+            console.error('Error!', error.message);
+            alert('Something went wrong. Please try again.');
+        });
+    });
+</script>
+
+</body>
+</html>
