@@ -135,14 +135,18 @@
                 <input type="email" name="Email" placeholder="For updates" required>
             </div>
         </div>
-<div class="form-group" style="border: 2px dashed #b22222; padding: 15px; border-radius: 8px; background-color: #fff0f0;">
-            <label for="Secret" style="color: #b22222;">Security Question (To stop bots!)</label>
-            <p style="margin-top:0; font-size: 0.9em; color: #555;">Where did we meet? (One word, where Xiaoyang did her PhD)</p>
-            <input type="text" name="Secret" placeholder="Your Answer" required>
-        </div>
-        <div class="form-group">
-            <label for="Notes">Notes (Optional)</label>
-            <textarea name="Notes" rows="3" placeholder="Anything else we should know? (e.g., dietary restrictions, travel needs)"></textarea>
+<div class="form-group" style="margin-top: 20px; padding: 15px; background-color: #fff5f5; border: 2px dashed #b22222; border-radius: 8px;">
+            <label for="Secret" style="color: #b22222; font-weight: bold;">Security Question *</label>
+            <p style="margin: 5px 0 10px; font-size: 0.9em; color: #666;">
+                Where did we get engaged?
+            </p>
+            <select name="Secret" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; background: white;">
+                <option value="" disabled selected>-- Select the City --</option>
+                <option value="paris">madrid</option>
+                <option value="london">houston</option>
+                <option value="tokyo">london</option>
+                <option value="sunnyvale">kiev</option> 
+            </select>
         </div>
 
         <button type="submit">Send Address</button>
