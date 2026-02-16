@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex & Xiaoyang - Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background-color: #fffaf0;
+            /* Safe CSS-only background (no image file needed) */
+            background-image: 
+                linear-gradient(45deg, #f0e6d2 25%, transparent 25%, transparent 75%, #f0e6d2 75%, #f0e6d2),
+                linear-gradient(45deg, #f0e6d2 25%, transparent 25%, transparent 75%, #f0e6d2 75%, #f0e6d2);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: #333;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 4px double #b22222; /* Double border for double happiness */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 90%;
+            width: 400px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .symbol {
+            font-size: 80px;
+            color: #b22222;
+            line-height: 1;
+            margin-bottom: 10px;
+            display: inline-block;
+            text-shadow: 2px 2px 0px #d4af37; /* Gold shadow */
+        }
+
+        h1 {
+            color: #b22222;
+            margin: 10px 0 5px 0;
+            font-size: 2em;
+        }
+
+        p.date {
+            color: #d4af37; /* Gold */
+            font-weight: bold;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        p.fun-text {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #b22222;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(178, 34, 34, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #8b0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(178, 34, 34, 0.4);
+        }
+
+        /* A subtle floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="symbol">囍</div>
+        
+        <h1>Alex & Xiaoyang</h1>
+        <p class="date">February 2026 | Beijing</p>
+        
+        <p class="fun-text">
+            We are getting married!<br>
+            (Website is putting on its makeup...)
+        </p>
+
+        <a href="/guestinfo/" class="btn">💌 Send Us Your Address</a>
+    </div>
+
+</body>
+</html>
